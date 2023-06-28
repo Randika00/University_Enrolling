@@ -1,6 +1,4 @@
 /*
-  IT20225988
-  Piyathissa E.G.R.M
   Group 12
  */
 
@@ -43,8 +41,6 @@ public class NewUniversity {
 
 }
 /*
- * IT20225988
- * Piyathisaa E.G.R.M
  * Group 12
  */
 package model;
@@ -101,8 +97,6 @@ public class Enroll {
 
 }
 /*
- * IT20225988
- * Piathissa E.G.R.M
  * Group 12
  */
 package model;
@@ -123,8 +117,6 @@ private HashMap<String, Double> StudentSpecilzation;
 	}
 }
 /*
- * IT20225988
- * Piyathissa E.G.R.M
  * Group 12
  */
 package model;
@@ -249,8 +241,6 @@ public class WeekDay {
 	
 }
 /*
- * IT20225988
- * Piyathissa E.G.R.M
  * Group 12
  * 
  */
@@ -289,8 +279,6 @@ public class CommonUtil {
 
 }
 /*
- * IT20225988
- * Piyathissa E.G.R.M
  * Group 12
  */
 package commons;
@@ -304,8 +292,6 @@ public class IDInvalidException {
 
 }
 /*
- * IT20225988
- * Piyathissa E.G.R.M
  * Group 12
  */
 package interfaces;
@@ -319,8 +305,6 @@ public class utilInterface {
 }
 
 /*
- * IT20225988
- * Piyathissa E.G.R.M
  * Group 12
  */
 package model;
