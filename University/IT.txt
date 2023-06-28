@@ -1,0 +1,445 @@
+/*
+  IT20225988
+  Piyathissa E.G.R.M
+  Group 12
+ */
+
+import model.Enroll;
+import model.Specialization;
+import model.WeekDay;
+import model.Weekend;
+
+public class NewUniversity {
+	
+	//Main method
+	public static void main(String args[]) {
+		Weekend student1= new Weekend();
+		student1.addDetails("Jane","Malabe","F",1990,"DS","QA");
+		String studentid=student1.generateID();
+		student1.addMark(56, 34, 12, 46, 78);
+		student1.showDetails();
+		System.out.println("Student ID"+studentid);
+		System.out.println();	
+		
+		WeekDay student2= new WeekDay();
+		student2.addDetails("Jim", "Kaluthara", "M", 1991, "SE", "Tuesday");
+		String studentid2=student2.generateID();
+		student2.addMark(78,89,45,87,90);
+		student2.showDetails();
+		System.out.println("Student ID"+studentid2);
+		
+		Enroll  sem1 = new Enroll();
+		sem1.enrollStudent(studentid,"IT");
+		sem1.enrollStudent(studentid2,"SE");
+		System.out.println("\n\nEnrolled Student Details");
+		sem1.displayEnrolledStudents();
+		
+		Specialization spe= new Specialization();
+		spe.addSpecialization("SE", 2.75);
+		spe.addSpecialization("DS", 3.5);
+		
+		
+	}
+
+}
+/*
+ * IT20225988
+ * Piyathisaa E.G.R.M
+ * Group 12
+ */
+package model;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class Enroll {
+	String id;
+    String Specialization;
+    HashMap<String, String> hashMap = new HashMap<String, String>();
+
+    public void enrollStudent(String id, String Specialization) {
+        hashMap.put(id, Specialization);
+    }
+
+    public Enroll(String id, String Specialization) {
+        this.id = id;
+        this.Specialization = Specialization;
+    }
+
+    void displayEnrolledStudents() {
+    	for(Map.Entry<String,String> entry: enrollments.entrySet()) 
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+    }
+
+    public Enroll() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSpecialization() {
+        return Specialization;
+    }
+
+    public void setSpecialization(String Specialization) {
+        this.Specialization = Specialization;
+    }
+
+    @Override
+    public String toString() {
+        return "Enroll{" +
+                "id=" + id +
+                ", Specialization='" + Specialization + '\'' +
+                '}';
+    }
+
+}
+/*
+ * IT20225988
+ * Piathissa E.G.R.M
+ * Group 12
+ */
+package model;
+
+import java.util.HashMap;
+
+public class Specialization {
+
+private HashMap<String, Double> StudentSpecilzation;
+	
+	public Specialization() {
+		this.StudentSpecilzation= new  HashMap<String, Double>();
+	}
+	
+	public void addSpecialization(String Spec,double r) {
+		this.StudentSpecilzation.put(Spec, r);
+		
+	}
+}
+/*
+ * IT20225988
+ * Piyathissa E.G.R.M
+ * Group 12
+ */
+package model;
+import java.security.SecureRandom;
+
+import commons.CommonUtil;
+import commons.IDInvalidException;
+import interfaces.utilInterface;
+
+
+public class WeekDay {
+	 private String Sname;
+	    private String Saddress;
+	    private String Sex;
+	    private int bornYear;
+	    private  String Specialization;
+	    private String freeDay;
+	    private int[] Marks = new int[5];
+
+	    public WeekDay() {
+	    	
+	    }
+
+	    public void addDetails(String Sname, String Saddress, String Sex, int bornYear, String Specialization, String freeDay) {
+	        this.Sname = Sname;
+	        this.Saddress = Saddress;
+	        this.Sex = Sex;
+	        this.bornYear = bornYear;
+	        this.Specialization = Specialization;
+	        this.freeDay = freeDay;
+	    }
+	    public void addMark(int Mark1,int Mark2,int Mark3,int Mark4,int Mark5){
+	        Marks[1] = Mark1;
+	        Marks[2] = Mark2;
+	        Marks[3] = Mark3;
+	        Marks[4] = Mark4;
+	        Marks[5] = Mark5;
+	    }
+
+	    public String generateID(){
+	        SecureRandom random = new SecureRandom();
+	        int num = random.nextInt(100000);
+	        return "IT"+String.format("%05d", num);
+	    }
+
+
+	    public WeekDay(String Sname, String Saddress, String Sex, int bornYear, String Specialization, String freeDay) {
+	        this.Sname = Sname;
+	        this.Saddress = Saddress;
+	        this.Sex = Sex;
+	        this.bornYear = bornYear;
+	        this.Specialization = Specialization;
+	        this.freeDay = freeDay;
+	    }
+	    public void showDetails(){
+	        System.out.println("Student name "+ Sname+"\nStudent Address "+Saddress+
+	                "\nGender "+Sex+"\nStudent Birth Year "+bornYear+"\nStudent Specialization "+Specialization
+	                +"\nStudent FreeDay "+freeDay);
+
+	    }
+	    public String getSname() {
+	        return Sname;
+	    }
+
+	    public void setSname(String Sname) {
+	        this.Sname = Sname;
+	    }
+
+	    public String getSaddress() {
+	        return Saddress;
+	    }
+
+	    public void setSaddress(String Saddress) {
+	        this.Saddress = Saddress;
+	    }
+
+	    public String getSex() {
+	        return Sex;
+	    }
+
+	    public void setSex(String Sex) {
+	        this.Sex = Sex;
+	    }
+
+	    public int getbornYear() {
+	        return bornYear;
+	    }
+
+	    public void setbornYear(int bornYear) {
+	        this.bornYear = bornYear;
+	    }
+
+	    public String getSpecialization() {
+	        return Specialization;
+	    }
+
+	    public void setSpecialization(String Specialization) {
+	        this.Specialization = Specialization;
+	    }
+
+	    public String getfreeDay() {
+	        return freeDay;
+	    }
+
+	    public void setfreeDay(String freeDay) {
+	        this.freeDay = freeDay;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Weekday{" +
+	                "Sname='" + Sname + '\'' +
+	                ", Saddress='" + Saddress + '\'' +
+	                ", Sex=" + Sex +
+	                ", bornYear=" + bornYear +
+	                ", Specialization='" + Specialization + '\'' +
+	                ", freeDay='" + freeDay + '\'' +
+	                '}';
+	    }
+	
+	
+	
+}
+/*
+ * IT20225988
+ * Piyathissa E.G.R.M
+ * Group 12
+ * 
+ */
+
+package commons;
+
+import java.util.Random;
+
+import interfaces.utilInterface;
+
+public class CommonUtil {
+	//show details methods 
+	
+	@Override
+	public void showDetails(String Sname,String Saddress,String Sex,String Specialization, int  Year, String Option, String Status) {
+		
+		if (Status.equals("Weekend")) {
+			System.out.println("Student Sname " + Sname);
+			System.out.println("Student Saddress " + Saddress);
+			System.out.println("Gender " + Sex);
+			System.out.println("Student   Year " + Year);
+			System.out.println("Student Specilization " + Specialization);
+			System.out.println("Student Job Title " + Option);	
+		}else {
+			System.out.println("Student Sname " + Sname);
+			System.out.println("Student Saddress " + Saddress);
+			System.out.println("Gender " + Sex);
+			System.out.println("Student Year " + Year);
+			System.out.println("Student Specilization " + Specialization);
+			System.out.println("Student FreeDay " + Option);
+		}
+		
+		
+	}
+	
+
+}
+/*
+ * IT20225988
+ * Piyathissa E.G.R.M
+ * Group 12
+ */
+package commons;
+
+public class IDInvalidException {
+	public IDInvalidException() {
+		System.out.println("Invalid Student ID Generation, System will generate a new Student ID");
+		
+	}
+
+
+}
+/*
+ * IT20225988
+ * Piyathissa E.G.R.M
+ * Group 12
+ */
+package interfaces;
+
+import commons.IDInvalidException;
+
+public class utilInterface {
+	public String IDgeneration() throws IDInvalidException;
+	public void showDetails(String Sname,String Saddress,String Sex,String Specialization, int Year, String Option, String Status);
+ 
+}
+
+/*
+ * IT20225988
+ * Piyathissa E.G.R.M
+ * Group 12
+ */
+package model;
+import java.security.SecureRandom;
+
+
+public class Weekend {
+	 private String Sname;
+	    private String Saddress;
+	    private  String Sex;
+	    private  int bornYear;
+	    private String Specialization;
+	    private String jobTitle;
+	    private int[] Marks = new int[5];
+	    
+	    public Weekend() {
+	    	
+	    }
+	    public void addDetails(String Sname, String Saddress, String Sex, int bornYear, String Specialization, String jobTitle ){
+	    	this.Sname = Sname;
+	        this.Saddress = Saddress;
+	        this.Sex  = Sex;
+	        this.bornYear = bornYear;
+	        this.Specialization = Specialization;
+	        this.jobTitle = jobTitle;	
+	    }
+	    //add marks
+	    public void addMark(int Mark1, int Mark2, int Mark3, int Mark4, int Mark5) {
+	    	Marks[1] = Marks[1];
+	    	Marks[2] = Marks[2];
+	    	Marks[3] = Marks[3];
+	    	Marks[4] = Marks[4];
+	    	Marks[5] = Marks[5];
+	    	
+	    }
+	    public String generateID() {
+	    	SecureRandom random = new SecureRandom();
+	    	int num = random.nextInt(100000);
+	    	return "IT"+String.format("%o5", num);
+	    	
+	    }
+	    //add student details for weekend student
+	    public Weekend(String Sname, String Saddress, String Sex, int bornYear, String Specialization, String jobTitle) {
+	    	this.Sname = Sname;
+	    	this.Saddress = Saddress;
+	    	this.Sex = Sex;
+	    	this.bornYear = bornYear;
+	    	this.Specialization = Specialization;
+	    	this.jobTitle = jobTitle;
+	    	
+	    }
+	    public void showDetails() {
+	    	System.out.print("Student Sname "+Sname+"\nStudent Saddress "+Saddress+"\nGender "+Sex+
+	    			"\nStudent Birth Year "+bornYear+"\nStudent Specialization"+Specialization
+	    			+"\nStudent Job Title "+jobTitle);
+	    	
+	    }
+	    //Getter and Setter for the Weekend Student 
+	    public String getSname() {
+	    	return Sname;
+	    	
+	    }
+	    
+	    public void setSname(String Sname) {
+	    	this.Sname = Sname;
+	    	
+	    }
+	    public String getSaddress() {
+	    	return Saddress;
+	    }
+	    public void setSaddress(String Saddrsss) {
+	    	this.Saddress = Saddress;
+	    	
+	    }
+	    public String getSex() {
+	    	return Sex;
+	    	
+	    }
+	    public void setSex(String Sex) {
+	    	this.Sex = Sex;
+	    	
+	    }
+	    public int getbornYear() {
+	    	return bornYear;
+	    	
+	    }
+	    public void setbornYear(int bornYear) {
+	    	this.bornYear = bornYear;
+	    	
+	    }
+	    public String getSpecialization() {
+	    	return Specialization;
+	    	
+	    }
+	    public void setSpecialization(String Specialization) {
+	    	this.Specialization = Specialization;
+	    	
+	    }
+	    public String getjobTitle() {
+	    	return jobTitle;
+	    	
+	    }
+	    public void setjobTitle(String jobTitle) {
+	    	this.jobTitle = jobTitle;
+	    	
+	    }
+	    @Override
+	    public String toString() {
+	    	return "Weekday{" +
+	    ", Sname= '" + Sname + '\'' +
+	    ", Saddress= '" + Saddress +'\'' +
+	    ", Sex= '" + Sex +
+	    ", bornYear='" + bornYear +
+	    ", Specialization= '" + Specialization + '\''+
+	    ", jobTitle='" + jobTitle + '\'' +
+	    '}';
+	    
+	    }
+	}
+
+	
+
